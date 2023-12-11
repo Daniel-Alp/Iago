@@ -11,4 +11,4 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # Add source to this project's executable.
-add_executable (Iago  "main.cpp")
+add_executable (Iago  "main.cpp" "board.cpp" "board.h" "types.h")
