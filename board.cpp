@@ -1,5 +1,6 @@
 #include "board.h"
 #include "bitboard.h"
+#include <iostream>
 
 u64 generate_moves(u64 player_disks, u64 enemy_disks) {
 	u64 no_disks = ~(player_disks | enemy_disks);
@@ -112,4 +113,23 @@ void make_move(u64& player_disks, u64& enemy_disks, i32 square) {
 
 	player_disks ^= flipped_disks;
 	enemy_disks ^= flipped_disks;
+}
+
+void print_board(Position pos) {
+	for (i32 row = 0; row < 8; row++) {
+		for (i32 col = 0; col < 8; col++) {
+			i32 square = row * 8 + col;
+
+			if (pos.white_disks & (1ULL << square)) {
+				std::cout << "W ";
+			}
+			else if (pos.black_disks & (1ULL << square)) {
+				std::cout << "B ";
+			}
+			else {
+				std::cout << ". ";
+			}
+		}
+		std::cout << std::endl;
+	}
 }
